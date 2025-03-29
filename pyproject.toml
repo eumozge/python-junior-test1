@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "juniortest1"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+autoflake = "^2.3.1"
+isort = "^6.0.1"
+black = "^25.1.0"
+flake8 = "^7.1.2"
+flake8-pytest-style = "^2.1.0"
+flake8-pyproject = "^1.2.3"
+pytest = "^8.3.5"
+pytest-clarity = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+known_first_party = "poetry"
+
+
+[tool.flake8]
+max-line-length = 120
+exclude = [
+    ".git",
+    ".gitignore",
+    "__pycache__",
+    "*.py[co]",
+    "venv",
+    ".venv",
+    ".pytest_cache",
+    "*/migrations/*",
+    ".env",
+    "conftest.py"
+]
+
+[tool.pytest.ini_options]
+pythonpath = "."
+python_files = [
+    "tests.py",
+    "test_*.py",
+    "*_tests.py"
+]
+addopts = [
+    "--color=yes",
+    "-vv",
+    "-s",
+    "-W ignore::DeprecationWarning"
+]
